@@ -9,3 +9,11 @@ val Pink80 = Color(0xFFEFB8C8)
 val Purple40 = Color(0xFF6650a4)
 val PurpleGrey40 = Color(0xFF625b71)
 val Pink40 = Color(0xFF7D5260)
+
+
+val hillsGreen = Color(0xFFA3B2A4)
+val balanceGreen = Color(0xFFC3C6A8)
+val chaiTea = Color(0xFFEFDBB2)
+val larbGai = Color(0xFFE0C6AD)
+val balancedBeige = Color(0xFFC1B2A2)
+val whirlwindPink = Color(0xFFE4D5D3)
