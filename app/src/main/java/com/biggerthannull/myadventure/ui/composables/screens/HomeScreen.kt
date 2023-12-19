@@ -6,7 +6,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.biggerthannull.myadventure.R
+import com.biggerthannull.myadventure.ui.composables.components.PrimaryListComponent
+import com.biggerthannull.myadventure.ui.composables.components.SpinnerComponent
 import com.biggerthannull.myadventure.ui.theme.MyAdventureTheme
 import com.biggerthannull.myadventure.ui.theme.balancedBeige
 import com.biggerthannull.myadventure.ui.viewmodel.events.HomeScreenUserEvents
@@ -19,9 +23,20 @@ fun HomeScreen(uiState: HomeUIState, events: HomeScreenUserEvents) {
             .background(balancedBeige)
             .fillMaxSize()
     ) {
-        Text(
-            text = uiState.title
-        )
+        when (uiState) {
+            is HomeUIState.Loading -> SpinnerComponent()
+            is HomeUIState.Error -> Text(text = stringResource(id = R.string.generic_data_error))
+            is HomeUIState.Loaded -> {
+                if (uiState.upcomingEvents.isNotEmpty()) {
+                    PrimaryListComponent(upcomingEvents = uiState.upcomingEvents) {
+                        events.selectEvent(it)
+                    }
+                } else {
+                    Text(text = stringResource(id = R.string.no_upcoming_events))
+                }
+            }
+        }
+
     }
 }
 
@@ -31,11 +46,9 @@ fun HomeScreen(uiState: HomeUIState, events: HomeScreenUserEvents) {
 fun HomeScreenPreview() {
     MyAdventureTheme {
         HomeScreen(
-            uiState = HomeUIState(
-                title = "Adventure"
-            ),
+            uiState = HomeUIState.Loaded(),
             events = object : HomeScreenUserEvents {
-                override fun selectEvent() {
+                override fun selectEvent(title: String) {
                     // No op
                 }
 

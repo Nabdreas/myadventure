@@ -1,6 +1,11 @@
 package com.biggerthannull.myadventure.ui.viewmodel.model
 
-data class HomeUIState(
-    val isLoading: Boolean = false,
-    val title: String = ""
-)
+import com.biggerthannull.myadventure.domain.usecase.model.UpcomingEvent
+
+sealed class HomeUIState {
+    object Loading: HomeUIState()
+    object Error: HomeUIState()
+    data class Loaded(
+        val upcomingEvents: List<UpcomingEvent> = emptyList()
+    ): HomeUIState()
+}

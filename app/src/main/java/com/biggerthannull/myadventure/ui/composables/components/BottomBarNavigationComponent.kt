@@ -16,6 +16,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.biggerthannull.myadventure.ui.theme.MyAdventureTheme
 import com.biggerthannull.myadventure.ui.theme.Purple40
+import com.biggerthannull.myadventure.ui.theme.balanceGreen
 
 @Composable
 fun BottomBarNavigationComponent(navController: NavHostController) {
@@ -24,7 +25,7 @@ fun BottomBarNavigationComponent(navController: NavHostController) {
     )
 
     BottomNavigation(
-        backgroundColor = Color.Gray
+        backgroundColor = balanceGreen
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route
