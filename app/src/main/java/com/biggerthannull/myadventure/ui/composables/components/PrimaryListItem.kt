@@ -21,14 +21,14 @@ import com.biggerthannull.myadventure.ui.theme.MyAdventureTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PrimaryListItem(event: UpcomingEvent, navigate: (title: String) -> Unit) {
+fun PrimaryListItem(event: UpcomingEvent, navigate: (eventId: String) -> Unit) {
     Card(
         modifier = Modifier
             .padding(horizontal = 8.dp, vertical = 8.dp)
             .fillMaxWidth(),
         shape = RoundedCornerShape(corner = CornerSize(4.dp)),
         onClick = {
-            navigate(event.title)
+            navigate(event.id)
         },
         colors = CardDefaults.cardColors(
             containerColor = Color.Gray
@@ -52,6 +52,7 @@ fun PrimaryListItemPreview() {
     MyAdventureTheme {
         PrimaryListItem(
             event = UpcomingEvent(
+                id = "eventId",
                 title = "Bristol Audax",
                 date = "21/01/2024",
                 imageUrl = "https://theunknownaroundthecorner.files.wordpress" +

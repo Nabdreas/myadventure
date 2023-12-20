@@ -27,6 +27,7 @@ class EventsRepositoryImpl @Inject constructor(
     private fun dtoToDomain(dto: List<UpcomingEventsResponseDTO>): List<UpcomingEvent> {
         return dto.map { event ->
             UpcomingEvent(
+                id = event._id.orEmpty(),
                 title = event.title.orEmpty(),
                 date = event.date.toString(),
                 imageUrl = event.imageUrl.orEmpty(),

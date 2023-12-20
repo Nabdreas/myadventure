@@ -10,7 +10,7 @@ import com.biggerthannull.myadventure.domain.usecase.model.UpcomingEvent
 import com.biggerthannull.myadventure.ui.theme.MyAdventureTheme
 
 @Composable
-fun PrimaryListComponent(upcomingEvents: List<UpcomingEvent>, navigate: (title: String) -> Unit) {
+fun PrimaryListComponent(upcomingEvents: List<UpcomingEvent>, navigate: (eventId: String) -> Unit) {
     LazyColumn(
         contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
     ) {

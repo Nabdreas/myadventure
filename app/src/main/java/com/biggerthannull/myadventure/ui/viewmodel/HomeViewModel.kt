@@ -35,7 +35,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    override fun selectEvent(title: String) {
-        Log.d("HomeViewModel", title)
+    override fun selectEvent(eventId: String) {
+        Log.d("HomeViewModel", eventId)
     }
 }

@@ -8,6 +8,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.biggerthannull.myadventure.ui.composables.screens.DiscoverScreen
+import com.biggerthannull.myadventure.ui.composables.screens.EventDetailsScreen
 import com.biggerthannull.myadventure.ui.composables.screens.HomeScreen
 import com.biggerthannull.myadventure.ui.composables.screens.ProfileScreen
 import com.biggerthannull.myadventure.ui.viewmodel.HomeViewModel
@@ -20,15 +21,20 @@ fun NavGraph(navHostController: NavHostController) {
             val viewModel: HomeViewModel = hiltViewModel()
             val uiState by viewModel.uiState.collectAsState()
             val event = viewModel as HomeScreenUserEvents
-            HomeScreen(uiState, event)
+            HomeScreen(uiState, event) {
+                navHostController.navigate(NavigationRoutes.EVENT_DETAILS)
+            }
         }
 
         composable(NavigationRoutes.DISCOVER) {
             DiscoverScreen()
         }
 
-        composable(NavigationRoutes.Profile) {
+        composable(NavigationRoutes.PROFILE) {
             ProfileScreen()
+        }
+        composable(NavigationRoutes.EVENT_DETAILS) {
+            EventDetailsScreen()
         }
     }
 }

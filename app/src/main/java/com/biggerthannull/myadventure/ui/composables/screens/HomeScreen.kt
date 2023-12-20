@@ -17,7 +17,8 @@ import com.biggerthannull.myadventure.ui.viewmodel.events.HomeScreenUserEvents
 import com.biggerthannull.myadventure.ui.viewmodel.model.HomeUIState
 
 @Composable
-fun HomeScreen(uiState: HomeUIState, events: HomeScreenUserEvents) {
+fun HomeScreen(uiState: HomeUIState, events: HomeScreenUserEvents, navigate:(eventId: String) ->
+Unit) {
     Column(
         modifier = Modifier
             .background(balancedBeige)
@@ -29,7 +30,7 @@ fun HomeScreen(uiState: HomeUIState, events: HomeScreenUserEvents) {
             is HomeUIState.Loaded -> {
                 if (uiState.upcomingEvents.isNotEmpty()) {
                     PrimaryListComponent(upcomingEvents = uiState.upcomingEvents) {
-                        events.selectEvent(it)
+                        navigate(it)
                     }
                 } else {
                     Text(text = stringResource(id = R.string.no_upcoming_events))
@@ -51,7 +52,9 @@ fun HomeScreenPreview() {
                 override fun selectEvent(title: String) {
                     // No op
                 }
-
+            },
+            navigate = {
+                // no op
             }
         )
     }
