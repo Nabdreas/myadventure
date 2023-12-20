@@ -57,8 +57,8 @@ fun PrimaryListItemPreview() {
                 imageUrl = "https://theunknownaroundthecorner.files.wordpress" +
                         ".com/2020/09/20200927-10-edit.jpg?w=1000",
                 location = "Bristol",
-                distance = 150,
-                elevation = 2589
+                distance = "150km",
+                elevation = "2589m"
             ),
             navigate = {
                 // No op

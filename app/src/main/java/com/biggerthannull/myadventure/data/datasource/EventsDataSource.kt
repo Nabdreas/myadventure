@@ -2,6 +2,6 @@ package com.biggerthannull.myadventure.data.datasource
 
 import com.biggerthannull.myadventure.data.datasource.model.UpcomingEventsResponseDTO
 
-interface EventsLocalDataSource {
-    fun getUpcomingEvents(): Result<UpcomingEventsResponseDTO>
+interface EventsDataSource {
+    suspend fun getUpcomingEvents(): Result<List<UpcomingEventsResponseDTO>>
 }

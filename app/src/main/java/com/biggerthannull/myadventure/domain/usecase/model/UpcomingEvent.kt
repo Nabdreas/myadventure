@@ -5,6 +5,6 @@ data class UpcomingEvent(
     val date: String,
     val imageUrl: String,
     val location: String,
-    val distance: Int,
-    val elevation: Int
+    val distance: String,
+    val elevation: String
 )

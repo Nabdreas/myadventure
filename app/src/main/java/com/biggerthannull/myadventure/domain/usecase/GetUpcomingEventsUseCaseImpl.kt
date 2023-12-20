@@ -7,7 +7,7 @@ import javax.inject.Inject
 class GetUpcomingEventsUseCaseImpl @Inject constructor(
     private val eventsRepository: EventsRepository
 ) : GetUpcomingEventsUseCase {
-    override fun execute(): UpcomingEventsResult {
+    override suspend fun execute(): UpcomingEventsResult {
         return eventsRepository.getUpcomingEvents()
     }
 }

@@ -1,5 +1,7 @@
 package com.biggerthannull.myadventure.data.di
 
+import com.biggerthannull.myadventure.data.datasource.EventsDataSource
+import com.biggerthannull.myadventure.data.datasource.EventsDataSourceImpl
 import com.biggerthannull.myadventure.data.datasource.EventsLocalDataSource
 import com.biggerthannull.myadventure.data.datasource.EventsLocalDataSourceImpl
 import com.biggerthannull.myadventure.data.repository.EventsRepositoryImpl
@@ -19,4 +21,8 @@ interface DataModule {
 
     @Binds
     fun bindEventsLocalDataSource(impl: EventsLocalDataSourceImpl): EventsLocalDataSource
+
+    @Binds
+    fun bindEventsDataSource(impl: EventsDataSourceImpl): EventsDataSource
+
 }
